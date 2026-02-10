@@ -1,12 +1,28 @@
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import "dotenv/config";
+import * as fs from 'fs';
+import * as path from 'path';
+
 //import { prisma } from './src/database.js';
+
+Client.prototype.commands = new Collection();
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds,
             GatewayIntentBits.GuildMessages,
             GatewayIntentBits.MessageContent]
 });
+
+const commandFoldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(commandFoldersPath);
+
+for (const folder of commandFolders) {
+  const commandsPath = path.join(commandFoldersPath, folder);
+  const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith('.ts'));
+  for (file of commandFiles) {
+
+  }
+}
 
 client.once(Events.ClientReady, (readyClient) => {
   console.log(`Logged in as ${readyClient.user.tag}!`);
