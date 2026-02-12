@@ -3,7 +3,7 @@
   "compilerOptions": {
     // File Layout
     "rootDir": "./",
-    "baseUrl": ".",
+    "baseUrl": "./dist",
     "paths": {
         "src/*": ["src/*"],
     },
@@ -15,6 +15,7 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "target": "esnext",
+     "rewriteRelativeImportExtensions": true,
     // "types": [],
     // For nodejs:
     "lib": ["esnext"],
@@ -47,5 +48,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-  }
+  },
+  "include": ["src/**/*", "index.ts", "deploy-guild-commands.ts"],
+  "exclude": ["dist", "node_modules"]
 }

@@ -1,9 +1,9 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
-    .setName("ping")
-    .setDescription("Replies with pong!");
+    .setName("defence")
+    .setDescription("Defence against the Dark Ones");
 
 export async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
-    await interaction.reply("pong");
+    await interaction.reply("This is entrapment.");
 };

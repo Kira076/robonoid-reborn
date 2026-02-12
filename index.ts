@@ -1,11 +1,13 @@
-import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
+import { Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import "dotenv/config";
 import * as fs from 'fs';
 import * as path from 'path';
 
-//import { prisma } from './src/database.js';
+import { ExtendedClient as Client } from './src/utils/CustomClient.js';
+import { loadCommands } from './src/utils/command-handler.js';
+import { loadEvents } from './src/utils/event-loader.js';
 
-Client.prototype.commands = new Collection();
+//import { prisma } from './src/database.js';
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds,
@@ -13,20 +15,7 @@ const client = new Client({
             GatewayIntentBits.MessageContent]
 });
 
-const commandFoldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(commandFoldersPath);
-
-for (const folder of commandFolders) {
-  const commandsPath = path.join(commandFoldersPath, folder);
-  const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith('.ts'));
-  for (file of commandFiles) {
-
-  }
-}
-
-client.once(Events.ClientReady, (readyClient) => {
-  console.log(`Logged in as ${readyClient.user.tag}!`);
-});
+await loadEvents(client);
 
 /*client.on(Events.GuildCreate, async (guild) => {
     await prisma.guild.upsert({
@@ -43,15 +32,8 @@ client.once(Events.ClientReady, (readyClient) => {
     })
 });*/
 
-client.on(Events.MessageCreate, async (message) => {
-    if (message.author.bot) return;
-
-    if (message.content === 'ping') {
-        await message.reply('pong');
-    }
-});
-
 process.on('SIGINT', async () => {
+    // TODO: Add logging and error handling here
     console.log('Shutting down gracefully...');
     //await prisma.$disconnect();
     process.exit(0);

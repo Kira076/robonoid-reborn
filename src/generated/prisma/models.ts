@@ -8,6 +8,8 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Guild.js'
-export type * from './models/User.js'
-export type * from './commonInputTypes.js'
+export type * from './models/Guild.ts'
+export type * from './models/User.ts'
+export type * from './models/Transformation.ts'
+export type * from './models/ChannelMapping.ts'
+export type * from './commonInputTypes.ts'

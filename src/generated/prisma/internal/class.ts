@@ -12,7 +12,7 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "./prismaNamespace.js"
+import type * as Prisma from "./prismaNamespace.ts"
 
 
 const config: runtime.GetPrismaClientConfig = {
@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.3.0",
   "engineVersion": "9d6ad21cbbceab97458517b147a6a09ff43aa735",
   "activeProvider": "sqlite",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Guild {\n  id        String   @id\n  prefix    String   @default(\"!\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  users     User[]\n}\n\nmodel User {\n  id        String   @id\n  guildId   String\n  points    Int      @default(0)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  guild     Guild    @relation(fields: [guildId], references: [id])\n\n  @@unique([id, guildId])\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Guild {\n  id              String           @id\n  name            String?\n  prefix          String           @default(\"!\")\n  createdAt       DateTime         @default(now())\n  updatedAt       DateTime         @updatedAt\n  users           User[]\n  transformations Transformation[]\n}\n\nmodel User {\n  id        String   @id\n  guildId   String\n  points    Int      @default(0)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  guild     Guild    @relation(fields: [guildId], references: [id])\n\n  @@unique([id, guildId])\n}\n\nmodel Transformation {\n  id              String           @id @default(cuid())\n  guildId         String\n  name            String // e.g., \"sailor-moon\", \"madoka\"\n  channelMappings ChannelMapping[]\n  createdAt       DateTime         @default(now())\n  updatedAt       DateTime         @updatedAt\n  guild           Guild            @relation(fields: [guildId], references: [id])\n\n  @@unique([guildId, name])\n}\n\nmodel ChannelMapping {\n  id               String         @id @default(cuid())\n  transformationId String\n  channelId        String\n  newName          String\n  transformation   Transformation @relation(fields: [transformationId], references: [id], onDelete: Cascade)\n\n  @@unique([transformationId, channelId])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Guild\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"prefix\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"GuildToUser\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guildId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"points\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToUser\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Guild\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"prefix\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"GuildToUser\"},{\"name\":\"transformations\",\"kind\":\"object\",\"type\":\"Transformation\",\"relationName\":\"GuildToTransformation\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guildId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"points\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToUser\"}],\"dbName\":null},\"Transformation\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guildId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channelMappings\",\"kind\":\"object\",\"type\":\"ChannelMapping\",\"relationName\":\"ChannelMappingToTransformation\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToTransformation\"}],\"dbName\":null},\"ChannelMapping\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"transformationId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channelId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"newName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"transformation\",\"kind\":\"object\",\"type\":\"Transformation\",\"relationName\":\"ChannelMappingToTransformation\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -195,6 +195,26 @@ export interface PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.transformation`: Exposes CRUD operations for the **Transformation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transformations
+    * const transformations = await prisma.transformation.findMany()
+    * ```
+    */
+  get transformation(): Prisma.TransformationDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.channelMapping`: Exposes CRUD operations for the **ChannelMapping** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ChannelMappings
+    * const channelMappings = await prisma.channelMapping.findMany()
+    * ```
+    */
+  get channelMapping(): Prisma.ChannelMappingDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

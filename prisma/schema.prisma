@@ -12,10 +12,12 @@ datasource db {
 
 model Guild {
   id        String   @id
+  name      String?
   prefix    String   @default("!")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   users     User[]
+  transformations Transformation[]
 }
 
 model User {
@@ -27,4 +29,26 @@ model User {
   guild     Guild    @relation(fields: [guildId], references: [id])
 
   @@unique([id, guildId])
+}
+
+model Transformation {
+  id          String   @id @default(cuid())
+  guildId     String
+  name        String   // e.g., "sailor-moon", "madoka"
+  channelMappings ChannelMapping[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  guild       Guild    @relation(fields: [guildId], references: [id])
+
+  @@unique([guildId, name])
+}
+
+model ChannelMapping {
+  id               String         @id @default(cuid())
+  transformationId String
+  channelId        String
+  newName          String
+  transformation   Transformation @relation(fields: [transformationId], references: [id], onDelete: Cascade)
+
+  @@unique([transformationId, channelId])
 }

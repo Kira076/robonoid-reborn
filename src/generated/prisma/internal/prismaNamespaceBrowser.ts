@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models.js'
-export type * from './prismaNamespace.js'
+export type * from '../models.ts'
+export type * from './prismaNamespace.ts'
 
 export const Decimal = runtime.Decimal
 
@@ -52,7 +52,9 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Guild: 'Guild',
-  User: 'User'
+  User: 'User',
+  Transformation: 'Transformation',
+  ChannelMapping: 'ChannelMapping'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,6 +72,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const GuildScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   prefix: 'prefix',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -89,10 +92,39 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const TransformationScalarFieldEnum = {
+  id: 'id',
+  guildId: 'guildId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TransformationScalarFieldEnum = (typeof TransformationScalarFieldEnum)[keyof typeof TransformationScalarFieldEnum]
+
+
+export const ChannelMappingScalarFieldEnum = {
+  id: 'id',
+  transformationId: 'transformationId',
+  channelId: 'channelId',
+  newName: 'newName'
+} as const
+
+export type ChannelMappingScalarFieldEnum = (typeof ChannelMappingScalarFieldEnum)[keyof typeof ChannelMappingScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

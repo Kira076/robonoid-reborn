@@ -16,10 +16,10 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "../models.js"
-import { type PrismaClient } from "./class.js"
+import type * as Prisma from "../models.ts"
+import { type PrismaClient } from "./class.ts"
 
-export type * from '../models.js'
+export type * from '../models.ts'
 
 export type DMMF = typeof runtime.DMMF
 
@@ -385,7 +385,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Guild: 'Guild',
-  User: 'User'
+  User: 'User',
+  Transformation: 'Transformation',
+  ChannelMapping: 'ChannelMapping'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "guild" | "user"
+    modelProps: "guild" | "user" | "transformation" | "channelMapping"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +555,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Transformation: {
+      payload: Prisma.$TransformationPayload<ExtArgs>
+      fields: Prisma.TransformationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TransformationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TransformationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>
+        }
+        findFirst: {
+          args: Prisma.TransformationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TransformationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>
+        }
+        findMany: {
+          args: Prisma.TransformationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>[]
+        }
+        create: {
+          args: Prisma.TransformationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>
+        }
+        createMany: {
+          args: Prisma.TransformationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TransformationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>[]
+        }
+        delete: {
+          args: Prisma.TransformationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>
+        }
+        update: {
+          args: Prisma.TransformationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>
+        }
+        deleteMany: {
+          args: Prisma.TransformationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TransformationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TransformationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>[]
+        }
+        upsert: {
+          args: Prisma.TransformationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransformationPayload>
+        }
+        aggregate: {
+          args: Prisma.TransformationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTransformation>
+        }
+        groupBy: {
+          args: Prisma.TransformationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransformationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TransformationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransformationCountAggregateOutputType> | number
+        }
+      }
+    }
+    ChannelMapping: {
+      payload: Prisma.$ChannelMappingPayload<ExtArgs>
+      fields: Prisma.ChannelMappingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ChannelMappingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ChannelMappingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>
+        }
+        findFirst: {
+          args: Prisma.ChannelMappingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ChannelMappingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>
+        }
+        findMany: {
+          args: Prisma.ChannelMappingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>[]
+        }
+        create: {
+          args: Prisma.ChannelMappingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>
+        }
+        createMany: {
+          args: Prisma.ChannelMappingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ChannelMappingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>[]
+        }
+        delete: {
+          args: Prisma.ChannelMappingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>
+        }
+        update: {
+          args: Prisma.ChannelMappingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>
+        }
+        deleteMany: {
+          args: Prisma.ChannelMappingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ChannelMappingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ChannelMappingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>[]
+        }
+        upsert: {
+          args: Prisma.ChannelMappingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChannelMappingPayload>
+        }
+        aggregate: {
+          args: Prisma.ChannelMappingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateChannelMapping>
+        }
+        groupBy: {
+          args: Prisma.ChannelMappingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ChannelMappingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ChannelMappingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ChannelMappingCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -591,6 +741,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const GuildScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   prefix: 'prefix',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -610,12 +761,41 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const TransformationScalarFieldEnum = {
+  id: 'id',
+  guildId: 'guildId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TransformationScalarFieldEnum = (typeof TransformationScalarFieldEnum)[keyof typeof TransformationScalarFieldEnum]
+
+
+export const ChannelMappingScalarFieldEnum = {
+  id: 'id',
+  transformationId: 'transformationId',
+  channelId: 'channelId',
+  newName: 'newName'
+} as const
+
+export type ChannelMappingScalarFieldEnum = (typeof ChannelMappingScalarFieldEnum)[keyof typeof ChannelMappingScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -748,6 +928,8 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   guild?: Prisma.GuildOmit
   user?: Prisma.UserOmit
+  transformation?: Prisma.TransformationOmit
+  channelMapping?: Prisma.ChannelMappingOmit
 }
 
 /* Types for Logging */
