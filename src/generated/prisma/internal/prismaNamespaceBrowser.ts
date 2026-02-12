@@ -74,6 +74,8 @@ export const GuildScalarFieldEnum = {
   id: 'id',
   name: 'name',
   prefix: 'prefix',
+  directoryMessageId: 'directoryMessageId',
+  directoryChannelId: 'directoryChannelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

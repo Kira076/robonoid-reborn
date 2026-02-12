@@ -28,6 +28,8 @@ export type GuildMinAggregateOutputType = {
   id: string | null
   name: string | null
   prefix: string | null
+  directoryMessageId: string | null
+  directoryChannelId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -36,6 +38,8 @@ export type GuildMaxAggregateOutputType = {
   id: string | null
   name: string | null
   prefix: string | null
+  directoryMessageId: string | null
+  directoryChannelId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +48,8 @@ export type GuildCountAggregateOutputType = {
   id: number
   name: number
   prefix: number
+  directoryMessageId: number
+  directoryChannelId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -54,6 +60,8 @@ export type GuildMinAggregateInputType = {
   id?: true
   name?: true
   prefix?: true
+  directoryMessageId?: true
+  directoryChannelId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -62,6 +70,8 @@ export type GuildMaxAggregateInputType = {
   id?: true
   name?: true
   prefix?: true
+  directoryMessageId?: true
+  directoryChannelId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -70,6 +80,8 @@ export type GuildCountAggregateInputType = {
   id?: true
   name?: true
   prefix?: true
+  directoryMessageId?: true
+  directoryChannelId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -151,6 +163,8 @@ export type GuildGroupByOutputType = {
   id: string
   name: string | null
   prefix: string
+  directoryMessageId: string | null
+  directoryChannelId: string | null
   createdAt: Date
   updatedAt: Date
   _count: GuildCountAggregateOutputType | null
@@ -180,6 +194,8 @@ export type GuildWhereInput = {
   id?: Prisma.StringFilter<"Guild"> | string
   name?: Prisma.StringNullableFilter<"Guild"> | string | null
   prefix?: Prisma.StringFilter<"Guild"> | string
+  directoryMessageId?: Prisma.StringNullableFilter<"Guild"> | string | null
+  directoryChannelId?: Prisma.StringNullableFilter<"Guild"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Guild"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Guild"> | Date | string
   users?: Prisma.UserListRelationFilter
@@ -190,6 +206,8 @@ export type GuildOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   prefix?: Prisma.SortOrder
+  directoryMessageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  directoryChannelId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   users?: Prisma.UserOrderByRelationAggregateInput
@@ -203,6 +221,8 @@ export type GuildWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.GuildWhereInput | Prisma.GuildWhereInput[]
   name?: Prisma.StringNullableFilter<"Guild"> | string | null
   prefix?: Prisma.StringFilter<"Guild"> | string
+  directoryMessageId?: Prisma.StringNullableFilter<"Guild"> | string | null
+  directoryChannelId?: Prisma.StringNullableFilter<"Guild"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Guild"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Guild"> | Date | string
   users?: Prisma.UserListRelationFilter
@@ -213,6 +233,8 @@ export type GuildOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   prefix?: Prisma.SortOrder
+  directoryMessageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  directoryChannelId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.GuildCountOrderByAggregateInput
@@ -227,6 +249,8 @@ export type GuildScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Guild"> | string
   name?: Prisma.StringNullableWithAggregatesFilter<"Guild"> | string | null
   prefix?: Prisma.StringWithAggregatesFilter<"Guild"> | string
+  directoryMessageId?: Prisma.StringNullableWithAggregatesFilter<"Guild"> | string | null
+  directoryChannelId?: Prisma.StringNullableWithAggregatesFilter<"Guild"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Guild"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Guild"> | Date | string
 }
@@ -235,6 +259,8 @@ export type GuildCreateInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutGuildInput
@@ -245,6 +271,8 @@ export type GuildUncheckedCreateInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutGuildInput
@@ -255,6 +283,8 @@ export type GuildUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutGuildNestedInput
@@ -265,6 +295,8 @@ export type GuildUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutGuildNestedInput
@@ -275,6 +307,8 @@ export type GuildCreateManyInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -283,6 +317,8 @@ export type GuildUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -291,6 +327,8 @@ export type GuildUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -299,6 +337,8 @@ export type GuildCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   prefix?: Prisma.SortOrder
+  directoryMessageId?: Prisma.SortOrder
+  directoryChannelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -307,6 +347,8 @@ export type GuildMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   prefix?: Prisma.SortOrder
+  directoryMessageId?: Prisma.SortOrder
+  directoryChannelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -315,6 +357,8 @@ export type GuildMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   prefix?: Prisma.SortOrder
+  directoryMessageId?: Prisma.SortOrder
+  directoryChannelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -368,6 +412,8 @@ export type GuildCreateWithoutUsersInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   transformations?: Prisma.TransformationCreateNestedManyWithoutGuildInput
@@ -377,6 +423,8 @@ export type GuildUncheckedCreateWithoutUsersInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   transformations?: Prisma.TransformationUncheckedCreateNestedManyWithoutGuildInput
@@ -402,6 +450,8 @@ export type GuildUpdateWithoutUsersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   transformations?: Prisma.TransformationUpdateManyWithoutGuildNestedInput
@@ -411,6 +461,8 @@ export type GuildUncheckedUpdateWithoutUsersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   transformations?: Prisma.TransformationUncheckedUpdateManyWithoutGuildNestedInput
@@ -420,6 +472,8 @@ export type GuildCreateWithoutTransformationsInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutGuildInput
@@ -429,6 +483,8 @@ export type GuildUncheckedCreateWithoutTransformationsInput = {
   id: string
   name?: string | null
   prefix?: string
+  directoryMessageId?: string | null
+  directoryChannelId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutGuildInput
@@ -454,6 +510,8 @@ export type GuildUpdateWithoutTransformationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutGuildNestedInput
@@ -463,6 +521,8 @@ export type GuildUncheckedUpdateWithoutTransformationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prefix?: Prisma.StringFieldUpdateOperationsInput | string
+  directoryMessageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directoryChannelId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutGuildNestedInput
@@ -512,6 +572,8 @@ export type GuildSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   name?: boolean
   prefix?: boolean
+  directoryMessageId?: boolean
+  directoryChannelId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   users?: boolean | Prisma.Guild$usersArgs<ExtArgs>
@@ -523,6 +585,8 @@ export type GuildSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   name?: boolean
   prefix?: boolean
+  directoryMessageId?: boolean
+  directoryChannelId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["guild"]>
@@ -531,6 +595,8 @@ export type GuildSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   name?: boolean
   prefix?: boolean
+  directoryMessageId?: boolean
+  directoryChannelId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["guild"]>
@@ -539,11 +605,13 @@ export type GuildSelectScalar = {
   id?: boolean
   name?: boolean
   prefix?: boolean
+  directoryMessageId?: boolean
+  directoryChannelId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type GuildOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "prefix" | "createdAt" | "updatedAt", ExtArgs["result"]["guild"]>
+export type GuildOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "prefix" | "directoryMessageId" | "directoryChannelId" | "createdAt" | "updatedAt", ExtArgs["result"]["guild"]>
 export type GuildInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | Prisma.Guild$usersArgs<ExtArgs>
   transformations?: boolean | Prisma.Guild$transformationsArgs<ExtArgs>
@@ -562,6 +630,8 @@ export type $GuildPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     name: string | null
     prefix: string
+    directoryMessageId: string | null
+    directoryChannelId: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["guild"]>
@@ -992,6 +1062,8 @@ export interface GuildFieldRefs {
   readonly id: Prisma.FieldRef<"Guild", 'String'>
   readonly name: Prisma.FieldRef<"Guild", 'String'>
   readonly prefix: Prisma.FieldRef<"Guild", 'String'>
+  readonly directoryMessageId: Prisma.FieldRef<"Guild", 'String'>
+  readonly directoryChannelId: Prisma.FieldRef<"Guild", 'String'>
   readonly createdAt: Prisma.FieldRef<"Guild", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Guild", 'DateTime'>
 }

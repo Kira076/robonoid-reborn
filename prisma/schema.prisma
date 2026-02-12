@@ -14,6 +14,8 @@ model Guild {
   id        String   @id
   name      String?
   prefix    String   @default("!")
+  directoryMessageId String?
+  directoryChannelId String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   users     User[]

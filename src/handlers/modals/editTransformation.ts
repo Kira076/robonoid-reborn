@@ -3,7 +3,7 @@ import { prisma } from '../../database.js';
 
 export async function handleEditTransformation(interaction: ModalSubmitInteraction) {
   const transformationName = interaction.customId.split(':')[1];
-  const mappingsText = interaction.fields.getTextInputValue('mappings');
+  const mappingsText = interaction.fields.getTextInputValue('mappingsInput');
 
   await interaction.deferReply({ ephemeral: true });
 

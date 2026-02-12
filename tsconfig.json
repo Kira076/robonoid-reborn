@@ -49,6 +49,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
-  "include": ["src/**/*", "index.ts", "deploy-guild-commands.ts"],
+  "include": ["src/**/*", "index.ts", "deploy-guild-commands.ts", "deploy-test-guild-commands.ts"],
   "exclude": ["dist", "node_modules"]
 }
