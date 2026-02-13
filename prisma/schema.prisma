@@ -54,3 +54,15 @@ model ChannelMapping {
 
   @@unique([transformationId, channelId])
 }
+
+enum CharComponentSlot {
+  Origin
+  Class
+  Descriptor
+}
+
+model CharGeneratorComponent {
+  id               String         @id @default(cuid())
+  slot             CharComponentSlot
+
+}
