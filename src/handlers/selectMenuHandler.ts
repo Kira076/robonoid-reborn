@@ -4,7 +4,10 @@ import { handleApplyTransformation } from './selects/applyTransformation.js';
 export async function handleSelectMenu(interaction: StringSelectMenuInteraction) {
   try {
     switch (interaction.customId) {
-      case 'apply_transformation':
+      case 'apply_transformation:false':
+        await handleApplyTransformation(interaction);
+        break;
+      case 'apply_transformation:true':
         await handleApplyTransformation(interaction);
         break;
       

@@ -4,7 +4,10 @@ import { handleSelectTransformation } from './buttons/selectTransformation.js';
 export async function handleButton(interaction: ButtonInteraction) {
   try {
     switch (interaction.customId) {
-      case 'select_transformation':
+      case 'select_transformation:false':
+        await handleSelectTransformation(interaction);
+        break;
+      case 'select_transformation:true':
         await handleSelectTransformation(interaction);
         break;
       
